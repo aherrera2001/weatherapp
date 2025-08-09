@@ -16,7 +16,7 @@
     </div>
     <div class="weather">
         <img src="images/rain.png" class="weather-icon">
-        <h1 class="temp">22°c</h1>
+        <h1 class="temp">22°F</h1>
         <h2 class="city">New York</h2>
         <div class="details">
             <div class="col">
@@ -29,7 +29,7 @@
             <div class="col">
                 <img src="images/wind.png">
                 <div>
-                    <p class="wind">15 km/hr</p>
+                    <p class="wind">15 mph</p>
                     <p>Wind Speed</p>
                 </div>
             </div>
@@ -39,7 +39,7 @@
 
 <script>
     const apiKey = "9efe6b2ae4c6966b648c20c6ca890329";
-    const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+    const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=";
 
     const searchBox = document.querySelector(".search input");
     const searchBtn = document.querySelector(".search button");
@@ -55,9 +55,9 @@
             const data = await response.json();
 
             document.querySelector(".city").innerHTML = data.name;
-            document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
+            document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°F";
             document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
-            document.querySelector(".wind").innerHTML = data.wind.speed + " km/hr";
+            document.querySelector(".wind").innerHTML = data.wind.speed + " mph";
 
             if (data.weather[0].main == "Clouds") {
                 weatherIcon.src = "images/clouds.png";
